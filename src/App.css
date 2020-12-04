@@ -1,38 +1,149 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+html
+{
+  background-color: #123a3d;
+  height: auto;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.header{
+    background-image: url(./utils/assets/img/fondo.png);
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 660px;
+    text-align: center;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .footer{
+    background-image: url(./utils/assets/img/footer.png);
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      height: 300px;
+      margin-top: -13%;
+      text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  .form{
+    text-align: center;
   }
+.Logo
+{
+    margin-top: 5%;
+    width: 179px;
+    height: 172px;
+}
+.MC
+{
+    margin-top: 10%;
+    width: 179px;
+    height: 172px;
+}
+.title
+{
+    font-size: 85px;
+    font-family: 'Playfair Display', serif;
+    color: #f9f5d9;
+}
+.title2
+{
+    font-size: 40px;
+    font-family: 'Playfair Display', serif;
+    color: #f9e29e;
+}
+.subtitle
+{
+    font-size: 75px;
+    font-family: 'Playfair Display', serif;
+    color: #f9e29e;
+}
+.subtitle2
+{
+    font-size: 70px;
+    font-family: 'Fredericka the Great', cursive;
+    color: #f2efde;
+}
+.premio
+{
+    margin-top: 4%;
+}
+.banner
+{
+  margin-left: -2px;
+  width: 233px;
+  height: 114px;
+}
+.banner2
+{
+  margin-left: -2px;
+  width: 195px;
+  height: 114px;
+}
+
+.divform
+{
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.buttonForm
+{
+  background-color: #ed1e3f;
+  border-color: #f44336;
+  width: 134px;
+  height: 46px;
+  border-radius: 20px;
+  font-family: 'Playfair Display', serif;
+  color: #f7eac5;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.inputform
+{
+  width: 300px;
+  height: 32px;
+  border-radius: 12px;
+  border-color: #fff2cb;
+  background-color: #f5f5f5;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #616161;
+  margin-left: 10px;
+}
+.inputNumform
+{
+  width: 60px;
+  height: 32px;
+  border-radius: 12px;
+  border-color: #fff2cb;
+  background-color: #f5f5f5;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #616161;
+  margin-left: 10px;
+text-align: center;
+}
+
+.divRadio
+{
+  font-size: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #f5f5f5;
+  margin-top: 1%;
+}
+.radioForm
+{
+  padding-left: 5px;
+  padding-right: 20px;
+}
+
+label
+{
+  font-size: 30px;
+  font-family: 'Playfair Display', serif;
+  color: #f5f5f5;
 }
