@@ -134,6 +134,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                     onBlur={handleBlur}
                   />
                 </label>
+                <p>{errors?.firstName}</p>
               </div>
               <div className="divform">
                 <label>
@@ -147,6 +148,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                     onBlur={handleBlur}
                   />
                 </label>
+                <p>{errors?.lastName}</p>
               </div>
               <div className="divform">
                 <label>
