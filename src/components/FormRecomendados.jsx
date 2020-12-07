@@ -4,18 +4,24 @@ import { validateNameLast, validatePhone } from "../utils/Validations";
 const url = "http://201.151.177.210:8080/api/v1/people/q/add-referrer";
 
 export default class FormRecomendados extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    city: "",
-    careOfHealth: "",
-    disease: "",
-    civilStatus: "",
-    age: "",
-    relationship: "",
-    job: "",
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      city: "",
+      careOfHealth: "",
+      disease: "",
+      civilStatus: "",
+      age: "",
+      relationship: "",
+      job: "",
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   handleChange = async (e) => {
     e.persist();
@@ -24,15 +30,22 @@ export default class FormRecomendados extends React.Component {
       [e.target.name]: e.target.value,
     });
   };
+
   validateForm = () => {
-    if(!validatePhone(this.state.phoneNumber) || !validateNameLast(this.state.firstName) || !validateNameLast(this.state.lastName) || this.state.age < 18)
-    {
-      if(!validatePhone(this.state.phoneNumber)) alert("Número de telefono invalido");
-      else if(!validateNameLast(this.state.firstName)) alert("Nombre incorrecto");
-      else if(!validateNameLast(this.state.lastName)) alert("Apellido incorrecto");
+    if (
+      !validatePhone(this.state.phoneNumber) ||
+      !validateNameLast(this.state.firstName) ||
+      !validateNameLast(this.state.lastName) ||
+      this.state.age < 18
+    ) {
+      if (!validatePhone(this.state.phoneNumber))
+        alert("Número de telefono invalido");
+      else if (!validateNameLast(this.state.firstName))
+        alert("Nombre incorrecto");
+      else if (!validateNameLast(this.state.lastName))
+        alert("Apellido incorrecto");
       else alert("Tu recomendado debe ser mayor de edad");
-    }
-    else{
+    } else {
       const user = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -43,39 +56,36 @@ export default class FormRecomendados extends React.Component {
         city: this.state.city,
         fields: [
           {
-            propertyId: '5fca8713e39d4c2b08a59483',
+            propertyId: "5fca8713e39d4c2b08a59483",
             data: [this.state.civilStatus],
           },
           {
-            propertyId: '5fca8713e39d4c2b08a59484',
+            propertyId: "5fca8713e39d4c2b08a59484",
             data: [this.state.careOfHealth],
           },
           {
-            propertyId: '5fca8713e39d4c2b08a59485',
+            propertyId: "5fca8713e39d4c2b08a59485",
             data: [this.state.disease],
           },
           {
-            propertyId: '5fca8713e39d4c2b08a59486',
+            propertyId: "5fca8713e39d4c2b08a59486",
             data: [this.state.age],
           },
           {
-            propertyId: '5fca8713e39d4c2b08a59487',
+            propertyId: "5fca8713e39d4c2b08a59487",
             data: [this.state.relationship],
           },
         ],
       };
-    axios.post(url, { user })
-    .then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+      axios.post(url, { user }).then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
     }
 
     alert("Esperando");
   };
   render() {
-    
-
     return (
       <form>
         <div className="form">
