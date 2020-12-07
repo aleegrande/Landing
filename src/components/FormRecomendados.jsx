@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { Formik, Field } from "formik";
+import is from "is_js";
+import { Formik } from "formik";
 import PropTypes from "prop-types";
+
+// Schemas de validación
+import RecomendadosSchema from "../schemas/recomendados-schema";
 
 const url = "http://201.151.177.210:8080/api/v1/people/q/add-referrer";
 
@@ -32,7 +36,7 @@ const FormRecomendados = ({ phoneNumber }) => {
       lastName: values.lastName,
       phoneNumber: values.phoneNumber,
       owner: "5fce99baefb04b3bae7b03da",
-      referrerPhoneNumber: phoneNumber,
+      referrerPhoneNumber: values.referrerPhoneNumber,
       job: values.job,
       city: values.city,
       fields: [
@@ -72,6 +76,7 @@ const FormRecomendados = ({ phoneNumber }) => {
         firstName: "",
         lastName: "",
         phoneNumber: "",
+        referrerPhoneNumber: phoneNumber,
         city: "",
         careOfHealth: "",
         disease: "",
@@ -81,10 +86,40 @@ const FormRecomendados = ({ phoneNumber }) => {
         job: "",
       }}
       onSubmit={handleSubmit}
+      validationSchema={RecomendadosSchema}
     >
-      {({ values, handleSubmit, handleChange, handleBlur, setFieldValue }) => (
+      {({
+        values,
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        setFieldValue,
+        errors,
+        touched,
+      }) => (
         <form onSubmit={handleSubmit}>
           <div className="form">
+            {values.referrerPhoneNumber === "" ? (
+              <>
+                <h1 className="title2">
+                  Proporciona tu número de teléfono antes de continuar:{" "}
+                </h1>
+                <div className="divform">
+                  <label>
+                    Número de teléfono:{" "}
+                    <input
+                      type="text"
+                      name="referrerPhoneNumber"
+                      value={values.referrerPhoneNumber}
+                      className="inputform"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </label>
+                </div>
+              </>
+            ) : null}
+
             <h1 className="title2">Datos sobre tus recomendados: </h1>
             <div>
               <div className="divform">
@@ -243,7 +278,11 @@ const FormRecomendados = ({ phoneNumber }) => {
               </div>
             </div>
             <div className="divform">
-              <button className="buttonForm" type="submit">
+              <button
+                className="buttonForm"
+                type="submit"
+                disabled={is.not.empty(touched) && is.not.empty(errors)}
+              >
                 ENVIAR
               </button>
             </div>

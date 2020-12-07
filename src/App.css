@@ -100,6 +100,14 @@ html
   font-weight: 500;
 }
 
+.buttonForm:disabled,
+.buttonForm[disabled]{
+  cursor: not-allowed;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 .inputform
 {
   width: 300px;
