@@ -9,13 +9,11 @@ import Footer from "../components/Footer";
 const Home = () => {
   const location = useLocation();
 
-  console.log(location);
-
   return (
     <div className="body">
       <Title />
       <Banner />
-      <Form />
+      <Form phoneNumber={location.search.split("=")[1]} />
       <Footer />
     </div>
   );
