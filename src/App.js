@@ -1,17 +1,19 @@
-import React from 'react';
-import Title from "./components/Title";
-import Banner from "./components/Banner";
-import Form from "./components/FormRecomendados";
-import Footer from "./components/Footer";
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import "./App.css";
+
+// Páginas
+import Home from "./pages/home";
 
 export default function App() {
   return (
-    <div className="body">
-      <Title />
-      <Banner />
-      <Form />
-      <Footer />
-    </div> 
-  )
+    <Router forceRefresh>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
