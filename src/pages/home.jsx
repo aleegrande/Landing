@@ -14,7 +14,6 @@ const Home = () => {
       <Title />
       <Banner />
       <Form phoneNumber={location.search.split("=")[1]} />
-      <Footer />
     </div>
   );
 };
