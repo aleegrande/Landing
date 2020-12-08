@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto+Slab:wght@500&display=swap');
+
 html
 {
   background-color: #123a3d;
@@ -15,34 +17,21 @@ html
     height: 660px;
     text-align: center;
   }
-  .footer{
-    background-image: url(./utils/assets/img/footer.png);
-    width: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-      height: 300px;
-      margin-top: -13%;
-      text-align: center;
-  }
+  
   .form{
     text-align: center;
   }
 .Logo
 {
-    margin-top: 5%;
-    width: 179px;
-    height: 172px;
+    width: 280px;
+    height: 100px;
+    margin-top: 3%;
+    margin-bottom: 2%;
 }
-.MC
-{
-    margin-top: 11%;
-    width: 179px;
-    height: 172px;
-}
+
 .title
 {
-    font-size: 85px;
+    font-size: 72px;
     font-family: 'Playfair Display', serif;
     color: #f9f5d9;
 }
@@ -54,31 +43,41 @@ html
 }
 .subtitle
 {
-    font-size: 75px;
+    font-size: 62px;
     font-family: 'Playfair Display', serif;
     color: #f9e29e;
 }
+.divRP
+{
+  margin-top: 2%;
+}
+.RP{
+  font-size: 60px;
+  font-family: 'Roboto Slab', serif;
+  color: #ffffff;
+}
+.titledistribuidor
+{
+  font-size: 30px;
+  font-family: 'Nunito', sans-serif;
+  color: #ffffff;
+}
 .subtitle2
 {
-    font-size: 70px;
+    font-size: 62px;
     font-family: 'Fredericka the Great', cursive;
     color: #f2efde;
 }
 .premio
 {
-    margin-top: 4%;
+    margin-top: 2%;
 }
-.banner
+
+.Banner
 {
-  margin-left: -2px;
-  width: 233px;
-  height: 114px;
-}
-.banner2
-{
-  margin-left: -2px;
-  width: 195px;
-  height: 114px;
+  background-image: url(./utils/assets/img/banner.png);
+  background-repeat: repeat-x;
+  height: 120px;
 }
 
 .divform
@@ -98,6 +97,14 @@ html
   color: #f7eac5;
   font-size: 17px;
   font-weight: 500;
+}
+
+.buttonForm:disabled,
+.buttonForm[disabled]{
+  cursor: not-allowed;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 .inputform
@@ -146,4 +153,10 @@ label
   font-size: 30px;
   font-family: 'Playfair Display', serif;
   color: #f5f5f5;
+}
+
+p{
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+  color: #FF7B6E;
 }
