@@ -1,6 +1,5 @@
 import React from 'react'
 import Logo from "../utils/assets/img/mc.png";
-import RP from "../utils/assets/img/LogoRP.png";
 
 export default function Title() {
     return (

@@ -7,6 +7,13 @@ html
 {
   background-color: #123a3d;
   height: auto;
+  text-align: center;
+}
+.imgSocial
+{
+  width: 40px;
+  height: 40px;
+  margin-left: 3%;
 }
 .header{
     background-image: url(./utils/assets/img/fondo.png);
@@ -28,7 +35,34 @@ html
     margin-top: 3%;
     margin-bottom: 2%;
 }
-
+.footer{
+ margin-bottom: 2%;
+}
+.divNota
+{
+  background-color: #ed1e3f;
+  border-radius: 40px;
+  margin-top: 2%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.labelNota
+{
+  font-size: 40px;
+  color: #f2efde;
+  margin-left: 15px;
+  margin-right: 25px;
+  
+}
+.labelSocial
+{
+  font-size: 20px;
+  color: #f9e29e;
+}
+.divSocial
+{
+  margin-top: 20px;
+}
 .title
 {
     font-size: 72px;
