@@ -1,24 +1,28 @@
-import React from 'react'
-import YouTube from 'react-youtube';
+import React from "react";
+import YouTube from "react-youtube";
 
+const Video = () => {
+  const VideoOnReady = (event) => event.target.playVideoAt(0);
+  const handleEndVideo = () => {
+    localStorage.setItem("hidden", true);
+  };
 
-class Video extends React.Component {
-    VideoOnReady(event) {
-        // access to player in all event handlers via event.target
-        event.target.playVideoAt(0);
-    }
-    render() {
-        const opts = {
-            height: '665px',
-            width: '100%',
-            playerVars: {
-                autoplay: 1,
-            },
-        };
+  const opts = {
+    height: "400",
+    width: "640",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
-        return <YouTube videoId="BGhJaEmmFxE" opts={opts} onReady={this.VideoOnReady} />;
-    }
-    
-}
+  return (
+    <YouTube
+      videoId="BGhJaEmmFxE"
+      opts={opts}
+      onReady={VideoOnReady}
+      onEnd={handleEndVideo}
+    />
+  );
+};
 
 export default Video;
