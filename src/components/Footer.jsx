@@ -3,7 +3,7 @@ import facebook from "../utils/assets/img/facebook.png";
 import whatsapp from "../utils/assets/img/whatsapp.png";
 import phone from "../utils/assets/img/phone.png";
 
-export default function () {
+const Footer = () => {
   return (
     <div className="footer">
       <div>
@@ -13,10 +13,12 @@ export default function () {
         </label>
       </div>
       <div className="divSocial">
-        <img src={facebook} className="imgSocial" />
-        <img src={whatsapp} className="imgSocial" />
-        <img src={phone} className="imgSocial" />
+        <img src={facebook} className="imgSocial" alt="Facebook" />
+        <img src={whatsapp} className="imgSocial" alt="WhatsApp" />
+        <img src={phone} className="imgSocial" alt="PhoneNumber" />
       </div>
     </div>
   );
-}
+};
+
+export default Footer;

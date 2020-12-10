@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import axios from "axios";
 import is from "is_js";
 import { Formik } from "formik";
 import PropTypes from "prop-types";
-import swal from 'sweetalert2'
-
+import swal from "sweetalert2";
 
 // Schemas de validación
 import RecomendadosSchema from "../schemas/recomendados-schema";
@@ -30,8 +29,6 @@ const arrs = {
   ],
   careOfHealths: ["Si", "No", "No sé", "A veces"],
 };
-
-
 
 const FormRecomendados = ({ phoneNumber }) => {
   const handleSubmit = async (values) => {
@@ -68,25 +65,26 @@ const FormRecomendados = ({ phoneNumber }) => {
     };
 
     const { data, status } = await axios.post(url, user);
-    
+
     if (status === 201) {
       console.log(data);
     }
-    var obj = { 0: 'Agrega el mayor número de referidos, y crea buenos hábitos en tus amigos.',
-                1: 'Cuida de tu cuerpo, es el único lugar que tienes para vivir, Utiliza Royal Prestige.', 
-                2: 'La salud es una riqueza, cuida de tus amigos y su salud, regala un obsequio Royal Prestige al anotarlos aquí.',
-                3: 'Recuerda que entre más referidos agregues, más oportunidades tienes de ganar.',
-                4: 'Aprecia y valora tu salud y de quien te rodea todos los días, utiliza Royal Prestige.',
-                5: 'La felicidad radica ante todo en la salud, Comparte tu secreto de cocinar saludable, envía un regalo (sin costo para ti) y anota a más amigos.' };
+    var obj = {
+      0: "Agrega el mayor número de referidos, y crea buenos hábitos en tus amigos.",
+      1: "Cuida de tu cuerpo, es el único lugar que tienes para vivir, Utiliza Royal Prestige.",
+      2: "La salud es una riqueza, cuida de tus amigos y su salud, regala un obsequio Royal Prestige al anotarlos aquí.",
+      3: "Recuerda que entre más referidos agregues, más oportunidades tienes de ganar.",
+      4: "Aprecia y valora tu salud y de quien te rodea todos los días, utiliza Royal Prestige.",
+      5: "La felicidad radica ante todo en la salud, Comparte tu secreto de cocinar saludable, envía un regalo (sin costo para ti) y anota a más amigos.",
+    };
     swal.fire({
-      icon: 'success',
-      title: 'Folio:',
+      icon: "success",
+      title: "Folio:",
       text: obj[Math.floor(Math.random() * (6 - 0) + 0)],
-    })
-
+    });
   };
 
-  return (  
+  return (
     <Formik
       initialValues={{
         firstName: "",
@@ -169,7 +167,7 @@ const FormRecomendados = ({ phoneNumber }) => {
               </div>
               <div className="divform">
                 <label>
-                   Número de teléfono:
+                  Número de teléfono:
                   <input
                     type="text"
                     name="phoneNumber"
@@ -201,20 +199,21 @@ const FormRecomendados = ({ phoneNumber }) => {
               <div className="divform">
                 <label>A su recomendado, ¿Le gusta cuidar su salud?</label>
                 <div className="divRadio">
-                {arrs.careOfHealths.map((careOfHealth, index) => (
-                  <React.Fragment
-                    key={`${careOfHealth.toLowerCase()}-${index}`}>
-                    <input
-                      type="radio"
-                      value={values.careOfHealth}
-                      name="careOfHealth"
-                      onChange={() =>
-                        setFieldValue("careOfHealth", careOfHealth)
-                      }
-                    />
-                    <text className="radioForm">{careOfHealth}</text>
-                  </React.Fragment>
-                ))}
+                  {arrs.careOfHealths.map((careOfHealth, index) => (
+                    <React.Fragment
+                      key={`${careOfHealth.toLowerCase()}-${index}`}
+                    >
+                      <input
+                        type="radio"
+                        value={values.careOfHealth}
+                        name="careOfHealth"
+                        onChange={() =>
+                          setFieldValue("careOfHealth", careOfHealth)
+                        }
+                      />
+                      <text className="radioForm">{careOfHealth}</text>
+                    </React.Fragment>
+                  ))}
                 </div>
                 <p>{errors?.careOfHealth}</p>
               </div>
@@ -309,7 +308,8 @@ const FormRecomendados = ({ phoneNumber }) => {
               <button
                 className="buttonForm"
                 type="submit"
-                disabled={is.not.empty(touched) && is.not.empty(errors)}>
+                disabled={is.not.empty(touched) && is.not.empty(errors)}
+              >
                 ENVIAR
               </button>
             </div>
