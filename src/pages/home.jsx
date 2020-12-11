@@ -9,14 +9,13 @@ import Footer from "../components/Footer";
 
 const Home = () => {
   const location = useLocation();
-  const [hidden] = useState(localStorage.getItem("hidden"));
 
   return (
     <>
       <div className="body">
         <Title />
         <Banner />
-        <Video/>
+        <Video />
         <Form phoneNumber={location.search.split("=")[1]} />
       </div>
       <Footer />
