@@ -112,34 +112,12 @@ const FormRecomendados = ({ phoneNumber }) => {
         touched,
       }) => (
         <form onSubmit={handleSubmit}>
-          <div className="form">
-            {values.referrerPhoneNumber === "" ? (
-              <>
-                <h1 className="title2">
-                  Proporciona tu número de teléfono antes de continuar:{" "}
-                </h1>
-                <div className="divform">
-                  <label>
-                    Número de teléfono:{" "}
-                    <input
-                      type="text"
-                      name="referrerPhoneNumber"
-                      value={values.referrerPhoneNumber}
-                      className="inputform"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </label>
-                  <p>{errors?.referrerPhoneNumber}</p>
-                </div>
-              </>
-            ) : null}
-
+          <div>
             <h1 className="title2">Datos acerca de tus recomendados: </h1>
             <div>
               <div className="divform">
                 <label>
-                  Nombre:{" "}
+                  Nombre de tu recomendado:{" "}
                   <input
                     type="text"
                     name="firstName"
@@ -153,7 +131,7 @@ const FormRecomendados = ({ phoneNumber }) => {
               </div>
               <div className="divform">
                 <label>
-                  Apellidos:{" "}
+                  Apellido de tu recomendado:{" "}
                   <input
                     type="text"
                     name="lastName"
@@ -167,7 +145,7 @@ const FormRecomendados = ({ phoneNumber }) => {
               </div>
               <div className="divform">
                 <label>
-                  Número de teléfono:
+                  Número de WhatsApp:
                   <input
                     type="text"
                     name="phoneNumber"
@@ -231,7 +209,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                 <p>{errors?.disease}</p>
               </div>
               <div className="divform">
-                <label>¿Cuál es su estado civil ? </label>
+                <label>¿Cuál es el estado civil de su recomendado?</label>
 
                 <div className="divRadio">
                   {arrs.civilStatuses.map((civilStatus, index) => (
@@ -254,7 +232,7 @@ const FormRecomendados = ({ phoneNumber }) => {
               </div>
               <div className="divform">
                 <label>
-                  ¿Cuál es su edad?
+                ¿Cuál es la edad aproximada de su recomendado?
                   <input
                     type="number"
                     name="age"

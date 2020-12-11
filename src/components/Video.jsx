@@ -3,25 +3,25 @@ import YouTube from "react-youtube";
 
 const Video = () => {
   const VideoOnReady = (event) => event.target.playVideoAt(0);
-  const handleEndVideo = () => {
-    localStorage.setItem("hidden", true);
-  };
 
   const opts = {
-    height: "400",
-    width: "640",
+    height: "320px",
+    width: "70%",
     playerVars: {
       autoplay: 1,
     },
   };
 
   return (
-    <YouTube
-      videoId="BGhJaEmmFxE"
-      opts={opts}
-      onReady={VideoOnReady}
-      onEnd={handleEndVideo}
-    />
+    <>
+      <div className="desVideo"><label className="desVideo">Sorteo exclusivo para clientes, conoce las bases del concurso en el siguiente video:
+        </label></div>
+      <YouTube
+        videoId="BGhJaEmmFxE"
+        opts={opts}
+        onReady={VideoOnReady}
+      />
+    </>
   );
 };
 

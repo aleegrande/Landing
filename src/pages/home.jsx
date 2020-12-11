@@ -13,19 +13,13 @@ const Home = () => {
 
   return (
     <>
-      {!hidden && <Video />}
       <div className="body">
         <Title />
         <Banner />
-        <div className="divNota">
-          <label className="labelNota">
-            Recuerda: Para participar en los premios, al menos debes de contar{" "}
-          </label>
-          <label className="labelNota">con 5 registros de referenciados.</label>
-        </div>
+        <Video/>
         <Form phoneNumber={location.search.split("=")[1]} />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };
