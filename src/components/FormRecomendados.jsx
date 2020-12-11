@@ -40,7 +40,7 @@ const FormRecomendados = ({ phoneNumber }) => {
     5: "La felicidad radica ante todo en la salud, Comparte tu secreto de cocinar saludable, envía un regalo (sin costo para ti) y anota a más amigos.",
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, actions) => {
     const user = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -86,6 +86,22 @@ const FormRecomendados = ({ phoneNumber }) => {
         icon: "success",
         title: `Folio: ${data.person._id}`,
         text: obj[Math.floor(Math.random() * (6 - 0) + 0)],
+      });
+
+      actions.resetForm({
+        values: {
+          firstName: "",
+          lastName: "",
+          phoneNumber: "",
+          referrerPhoneNumber: phoneNumber,
+          city: "",
+          careOfHealth: "",
+          disease: "",
+          civilStatus: "",
+          age: "",
+          relationship: "",
+          job: "",
+        },
       });
     } catch (error) {
       swal.fire({
