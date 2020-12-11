@@ -36,10 +36,16 @@ const FormRecomendados = ({ phoneNumber }) => {
       firstName: values.firstName,
       lastName: values.lastName,
       phoneNumber: values.phoneNumber,
-      owner: "5fca85fde39d4c2b08a59482",
-      referrerPhoneNumber: values.referrerPhoneNumber,
+      owner: "5fd3b75ec3f3d61f7ae2fd88",
+      referrerPhoneNumber: phoneNumber,
       job: values.job,
       city: values.city,
+      referrerFields: [
+        {
+          propertyId: "5fca85fde39d4c2b08a59482",
+          data: ["folio"],
+        },
+      ],
       fields: [
         {
           propertyId: "5fca8713e39d4c2b08a59483",
@@ -232,7 +238,7 @@ const FormRecomendados = ({ phoneNumber }) => {
               </div>
               <div className="divform">
                 <label>
-                ¿Cuál es la edad aproximada de su recomendado?
+                  ¿Cuál es la edad aproximada de su recomendado?
                   <input
                     type="number"
                     name="age"
