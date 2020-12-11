@@ -31,6 +31,15 @@ const arrs = {
 };
 
 const FormRecomendados = ({ phoneNumber }) => {
+  const obj = {
+    0: "Agrega el mayor número de referidos, y crea buenos hábitos en tus amigos.",
+    1: "Cuida de tu cuerpo, es el único lugar que tienes para vivir, Utiliza Royal Prestige.",
+    2: "La salud es una riqueza, cuida de tus amigos y su salud, regala un obsequio Royal Prestige al anotarlos aquí.",
+    3: "Recuerda que entre más referidos agregues, más oportunidades tienes de ganar.",
+    4: "Aprecia y valora tu salud y de quien te rodea todos los días, utiliza Royal Prestige.",
+    5: "La felicidad radica ante todo en la salud, Comparte tu secreto de cocinar saludable, envía un regalo (sin costo para ti) y anota a más amigos.",
+  };
+
   const handleSubmit = async (values) => {
     const user = {
       firstName: values.firstName,
@@ -70,24 +79,21 @@ const FormRecomendados = ({ phoneNumber }) => {
       ],
     };
 
-    const { data, status } = await axios.post(url, user);
+    try {
+      const { data, status } = await axios.post(url, { ...user });
 
-    if (status === 201) {
-      console.log(data);
+      swal.fire({
+        icon: "success",
+        title: `Folio: ${data.person._id}`,
+        text: obj[Math.floor(Math.random() * (6 - 0) + 0)],
+      });
+    } catch (error) {
+      swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "¡Hubo un error al mandar la solicitud!",
+      });
     }
-    var obj = {
-      0: "Agrega el mayor número de referidos, y crea buenos hábitos en tus amigos.",
-      1: "Cuida de tu cuerpo, es el único lugar que tienes para vivir, Utiliza Royal Prestige.",
-      2: "La salud es una riqueza, cuida de tus amigos y su salud, regala un obsequio Royal Prestige al anotarlos aquí.",
-      3: "Recuerda que entre más referidos agregues, más oportunidades tienes de ganar.",
-      4: "Aprecia y valora tu salud y de quien te rodea todos los días, utiliza Royal Prestige.",
-      5: "La felicidad radica ante todo en la salud, Comparte tu secreto de cocinar saludable, envía un regalo (sin costo para ti) y anota a más amigos.",
-    };
-    swal.fire({
-      icon: "success",
-      title: "Folio:",
-      text: obj[Math.floor(Math.random() * (6 - 0) + 0)],
-    });
   };
 
   return (
