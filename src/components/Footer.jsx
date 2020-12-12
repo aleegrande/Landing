@@ -1,21 +1,18 @@
 import React from "react";
-import facebook from "../utils/assets/img/facebook.png";
 import whatsapp from "../utils/assets/img/whatsapp.png";
-import phone from "../utils/assets/img/phone.png";
 
 const Footer = () => {
   return (
     <div className="footer">
       <div>
         <label className="labelSocial">
-          Para más información comunicate al 686 888 01 20 ó 664 777
+          Para más información comunicate al 6868880120 ó 6647770114
         </label>
       </div>
       <div className="divSocial">
-        <div><img src={facebook} className="imgSocial2" alt="Facebook" /><label className="labelSocial">Corporativo Metacoaching</label></div>
-        <div><img src={whatsapp} className="imgSocial2" alt="WhatsApp" /><label className="labelSocial">686 292 78 02</label></div>
+        <div><img src={whatsapp} className="imgSocial2" alt="WhatsApp" /><label className="labelSocial">6862927802</label></div>
       </div>
-      <div align="left">
+      <div align="center">
         <div>
           <label className="terminos">Términos y condiciones</label>
         </div>
@@ -61,7 +58,7 @@ Por cada recomendado que reciba su 2 premios instantáneos, tu acumularas un bol
         </div>
         
       </div>
-      <label className="terminos">Consulta la Politica de privacidad,<a className="terminos"  target="_blank" href="https://www.metacoaching.com.mx/pol%C3%ADtica-de-privacidad">aquí.</a>
+      <label className="terminos">Consulta la Politica de privacidad, haz clic <strong><a className="terminos"  target="_blank" href="https://www.metacoaching.com.mx/pol%C3%ADtica-de-privacidad">aquí.</a></strong>
 </label>
     </div>
   );

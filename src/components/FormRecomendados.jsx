@@ -31,6 +31,7 @@ const arrs = {
 };
 
 const FormRecomendados = ({ phoneNumber }) => {
+ 
   const obj = {
     0: "Agrega el mayor número de referidos, y crea buenos hábitos en tus amigos.",
     1: "Cuida de tu cuerpo, es el único lugar que tienes para vivir, Utiliza Royal Prestige.",
@@ -80,14 +81,12 @@ const FormRecomendados = ({ phoneNumber }) => {
     };
 
     try {
-      const { data, status } = await axios.post(url, { ...user });
-
+      const { data} = await axios.post(url, { ...user });
       swal.fire({
         icon: "success",
         title: `Folio: ${data.person._id}`,
         text: obj[Math.floor(Math.random() * (6 - 0) + 0)],
       });
-
       actions.resetForm({
         values: {
           firstName: "",
@@ -109,7 +108,23 @@ const FormRecomendados = ({ phoneNumber }) => {
         title: "Error",
         text: "¡Hubo un error al mandar la solicitud!",
       });
+      actions.resetForm({
+        values: {
+          firstName: "",
+          lastName: "",
+          phoneNumber: "",
+          referrerPhoneNumber: phoneNumber,
+          city: "",
+          careOfHealth: "",
+          disease: "",
+          civilStatus: "",
+          age: "",
+          relationship: "",
+          job: "",
+        },
+      });
     }
+    
   };
 
   return (
@@ -153,6 +168,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                     className="inputform"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    initialValue=""
                   />
                 </label>
                 <p>{errors?.firstName}</p>
@@ -167,6 +183,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                     className="inputform"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    initialValue=""
                   />
                 </label>
                 <p>{errors?.lastName}</p>
@@ -181,6 +198,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                     className="inputform"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    initialValue=""
                   />
                 </label>
                 <p>{errors?.lastName}</p>
@@ -232,6 +250,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                     value={values.disease}
                     className="inputform"
                     onChange={handleChange}
+                    initialValue=""
                   />
                 </label>
                 <p>{errors?.disease}</p>
@@ -267,6 +286,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                     value={values.age}
                     className="inputNumform"
                     onChange={handleChange}
+                    initialValue=""
                   />
                 </label>
                 <p>{errors?.age}</p>
