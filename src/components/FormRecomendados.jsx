@@ -11,7 +11,7 @@ import RecomendadosSchema from "../schemas/recomendados-schema";
 // Utilidades
 import selectMessage from "../utils/select-message";
 
-const url = "http://localhost:8080/api/v1/people/q/add-referrer";
+const url = "http://201.151.177.210:8080/api/v1/people/q/add-referrer";
 
 const arrs = {
   civilStatuses: ["Soltero/a", "Casado/a", "Viudo/a", "Divorciado/a"],
