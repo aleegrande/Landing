@@ -13,12 +13,6 @@ const RecomendadosSchema = object().shape({
       /\d{10}/,
       "* El número de teléfono está mal escrito, corrígelo, por favor. *"
     ),
-  referrerPhoneNumber: string()
-    .required("* El número de teléfono es obligatorio. *")
-    .matches(
-      /\d{10}/,
-      "* El número de teléfono está mal escrito, corrígelo, por favor. *"
-    ),
   city: string().required("* Selecciona una opción, por favor. *"),
   careOfHealth: string().required(
     "* Selecciona una opción, por favor, escríbela. *"
@@ -27,9 +21,9 @@ const RecomendadosSchema = object().shape({
     "* Ésta información es obligatoria, por favor, escríbela. *"
   ),
   civilStatus: string().required("Selecciona una opción, por favor."),
-  age: number().required(
-    "* Ésta información es obligatoria, por favor, escríbela. *"
-  ).min(18, "* La persona recomendada debe ser mayor de edad. *"),
+  age: number()
+    .required("* Ésta información es obligatoria, por favor, escríbela. *")
+    .min(18, "* La persona recomendada debe ser mayor de edad. *"),
   relationship: string().required("* Selecciona una opción, por favor. *"),
   job: string().required("* Selecciona una opción, por favor. *"),
 });

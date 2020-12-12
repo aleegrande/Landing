@@ -11,7 +11,7 @@ import RecomendadosSchema from "../schemas/recomendados-schema";
 // Utilidades
 import selectMessage from "../utils/select-message";
 
-const url = "http://201.151.177.210:8080/api/v1/people/q/add-referrer";
+const url = "http://localhost:8080/api/v1/people/q/add-referrer";
 
 const arrs = {
   civilStatuses: ["Soltero/a", "Casado/a", "Viudo/a", "Divorciado/a"],
@@ -183,7 +183,6 @@ const FormRecomendados = ({ phoneNumber }) => {
                     className="inputform"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    initialValue=""
                   />
                 </label>
                 <p>{errors?.firstName}</p>
@@ -198,7 +197,6 @@ const FormRecomendados = ({ phoneNumber }) => {
                     className="inputform"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    initialValue=""
                   />
                 </label>
                 <p>{errors?.lastName}</p>
@@ -213,7 +211,6 @@ const FormRecomendados = ({ phoneNumber }) => {
                     className="inputform"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    initialValue=""
                   />
                 </label>
                 <p>{errors?.lastName}</p>
@@ -227,6 +224,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                         type="radio"
                         value={values.city}
                         name="city"
+                        checked={values.city === city}
                         onChange={() => setFieldValue("city", city)}
                       />
                       <text className="radioForm">{city}</text>
@@ -246,6 +244,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                         type="radio"
                         value={values.careOfHealth}
                         name="careOfHealth"
+                        checked={values.careOfHealth === careOfHealth}
                         onChange={() =>
                           setFieldValue("careOfHealth", careOfHealth)
                         }
@@ -265,7 +264,6 @@ const FormRecomendados = ({ phoneNumber }) => {
                     value={values.disease}
                     className="inputform"
                     onChange={handleChange}
-                    initialValue=""
                   />
                 </label>
                 <p>{errors?.disease}</p>
@@ -281,6 +279,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                       <input
                         type="radio"
                         value={values.civilStatus}
+                        checked={values.civilStatus === civilStatus}
                         name="civilStatus"
                         onChange={() =>
                           setFieldValue("civilStatus", civilStatus)
@@ -301,7 +300,6 @@ const FormRecomendados = ({ phoneNumber }) => {
                     value={values.age}
                     className="inputNumform"
                     onChange={handleChange}
-                    initialValue=""
                   />
                 </label>
                 <p>{errors?.age}</p>
@@ -317,6 +315,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                         type="radio"
                         value={values.relationship}
                         name="relationship"
+                        checked={values.relationship === relationship}
                         onChange={() =>
                           setFieldValue("relationship", relationship)
                         }
@@ -336,6 +335,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                         type="radio"
                         value={values.job}
                         name="job"
+                        checked={values.job === job}
                         onChange={() => setFieldValue("job", job)}
                       />
                       <text className="radioForm">{job}</text>
@@ -349,7 +349,7 @@ const FormRecomendados = ({ phoneNumber }) => {
               <button
                 className="buttonForm"
                 type="submit"
-                disabled={is.not.empty(touched) && is.not.empty(errors)}
+                disabled={is.not.empty(errors)}
               >
                 ENVIAR
               </button>
