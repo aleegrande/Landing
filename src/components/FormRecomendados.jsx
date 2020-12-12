@@ -8,7 +8,10 @@ import swal from "sweetalert2";
 // Schemas de validación
 import RecomendadosSchema from "../schemas/recomendados-schema";
 
-const url = "http://201.151.177.210:8080/api/v1/people/q/add-referrer";
+// Utilidades
+import selectMessage from "../utils/select-message";
+
+const url = "http://localhost:8080/api/v1/people/q/add-referrer";
 
 const arrs = {
   civilStatuses: ["Soltero/a", "Casado/a", "Viudo/a", "Divorciado/a"],
@@ -31,15 +34,6 @@ const arrs = {
 };
 
 const FormRecomendados = ({ phoneNumber }) => {
-  const obj = [
-    "Gracias por dar de alta tu primer recomendado, te faltan 4 para participar en el concurso, sigue capturando. Recibe tu SMS, te estamos enviando el folio de tu captura.",
-    "Gracias por dar de alta tu segundo recomendado, te faltan 3 para participar en el concurso, sigue capturando. Te envíamos un SMS con el folio",
-    "Gracias por dar de alta tu tercer recomendado, te faltan 2 para participar en el concurso, sigue capturando. Te envíamos un SMS con el folio.",
-    "Gracias por dar de alta tu cuarto recomendado, te falta 1 para participar en el concurso, sigue capturando. Te envíamos un SMS con el folio.",
-    "Felicidades, ya estás participando en la gran rifa, recuerda que tus recomendados deberán recibir sus dos premios para que comiences a acumular boletos. Te envíamos un SMS con el folio.",
-    "Sigue capturando más recomendados, mientras más recomendados reciban sus premios, más boletos acumularás y más oportunidades tendrás de ganar. Te envíamos un SMS con el folio.",
-  ];
-
   const handleSubmit = async (values, actions) => {
     const user = {
       firstName: values.firstName,
@@ -79,13 +73,13 @@ const FormRecomendados = ({ phoneNumber }) => {
       ],
     };
 
-    try {
-      const { data } = await axios.post(url, user);
+    const { data, status } = await axios.post(url, user);
 
+    if (status.toString().match(/[2][0][0-4]{1}/)) {
       swal.fire({
         icon: "success",
-        title: `Folio: ${data.folio.splice(-5)}`,
-        text: obj[data.count - 1],
+        title: `Folio: ${data.folio}`,
+        text: selectMessage(data.count),
       });
 
       actions.resetForm({
@@ -103,13 +97,15 @@ const FormRecomendados = ({ phoneNumber }) => {
           job: "",
         },
       });
-    } catch (error) {
-      swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "¡Hubo un error al mandar la solicitud!",
-      });
+
+      return;
     }
+
+    return swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "¡Hubo un error al mandar la solicitud!",
+    });
   };
 
   return (
@@ -141,11 +137,13 @@ const FormRecomendados = ({ phoneNumber }) => {
       }) => (
         <form onSubmit={handleSubmit}>
           <div>
-            <h1 className="title2">Captura la informacion sobre tus recomendados: </h1>
+            <h1 className="title2">
+              Captura la información sobre tus recomendados:&nbsp;
+            </h1>
             <div>
               <div className="divform">
                 <label>
-                  Nombre de tu recomendado:{" "}
+                  Nombre de tu recomendado:&nbsp;
                   <input
                     type="text"
                     name="firstName"
@@ -160,7 +158,7 @@ const FormRecomendados = ({ phoneNumber }) => {
               </div>
               <div className="divform">
                 <label>
-                  Apellido de tu recomendado:{" "}
+                  Apellido de tu recomendado:&nbsp;
                   <input
                     type="text"
                     name="lastName"
