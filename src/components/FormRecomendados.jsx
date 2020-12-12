@@ -73,39 +73,71 @@ const FormRecomendados = ({ phoneNumber }) => {
       ],
     };
 
-    const { data, status } = await axios.post(url, user);
+    try {
+      const { data, status } = await axios.post(url, user);
 
-    if (status.toString().match(/[2][0][0-4]{1}/)) {
-      swal.fire({
-        icon: "success",
-        title: `Folio: ${data.folio}`,
-        text: selectMessage(data.count),
-      });
+      if (status.toString().match(/[20][0-4]{1}/)) {
+        swal.fire({
+          icon: "success",
+          title: `Folio: ${data.folio}`,
+          text: selectMessage(data.count),
+        });
 
-      actions.resetForm({
-        values: {
-          firstName: "",
-          lastName: "",
-          phoneNumber: "",
-          referrerPhoneNumber: phoneNumber,
-          city: "",
-          careOfHealth: "",
-          disease: "",
-          civilStatus: "",
-          age: "",
-          relationship: "",
-          job: "",
-        },
-      });
+        actions.resetForm({
+          values: {
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            referrerPhoneNumber: phoneNumber,
+            city: "",
+            careOfHealth: "",
+            disease: "",
+            civilStatus: "",
+            age: "",
+            relationship: "",
+            job: "",
+          },
+        });
 
-      return;
+        return;
+      }
+
+      if (status.toString().match(/[40][0-9]{1}/)) {
+        return swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "¡Hubo un error al mandar la solicitud!",
+        });
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        if (error.response.data?.error?.code === 11000) {
+          return swal.fire({
+            icon: "error",
+            title: "Hubo un error",
+            text: "Ya hay un cliente registrado con ese número de teléfono",
+          });
+        }
+      }
+
+      if (error.response.status === 404) {
+        switch (error.response.data.code) {
+          case "client_not_found":
+            return swal.fire({
+              icon: "error",
+              title: "Hubo un error",
+              text: "¡No te encuentras registrado en nuestra base de datos!",
+            });
+          case "client_exists": {
+            return swal.fire({
+              icon: "error",
+              title: "Hubo un error",
+              text: "Ya hay un cliente registrado con ese número de teléfono",
+            });
+          }
+        }
+      }
     }
-
-    return swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "¡Hubo un error al mandar la solicitud!",
-    });
   };
 
   return (
