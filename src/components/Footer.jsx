@@ -1,5 +1,6 @@
 import React from "react";
 import whatsapp from "../utils/assets/img/whatsapp.png";
+import meta from "../utils/assets/img/meta.png"
 
 const Footer = () => {
   return (
@@ -120,7 +121,7 @@ const Footer = () => {
             ganadora.{" "}
           </label>
         </div>
-      </div>
+      
       <label className="terminos">
         Consulta la Politica de privacidad, haz clic{" "}
         <strong>
@@ -133,6 +134,10 @@ const Footer = () => {
           </a>
         </strong>
       </label>
+      <div className="imgMeta">
+        <img src={meta} className="imgMeta"/>
+      </div>
+      </div>
     </div>
   );
 };

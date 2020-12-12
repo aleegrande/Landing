@@ -141,7 +141,7 @@ const FormRecomendados = ({ phoneNumber }) => {
       }) => (
         <form onSubmit={handleSubmit}>
           <div>
-            <h1 className="title2">Datos acerca de tus recomendados: </h1>
+            <h1 className="title2">Captura la informacion sobre tus recomendados: </h1>
             <div>
               <div className="divform">
                 <label>
