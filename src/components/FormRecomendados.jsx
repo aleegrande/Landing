@@ -31,15 +31,14 @@ const arrs = {
 };
 
 const FormRecomendados = ({ phoneNumber }) => {
- 
-  const obj = {
-    0: "Agrega el mayor número de referidos, y crea buenos hábitos en tus amigos.",
-    1: "Cuida de tu cuerpo, es el único lugar que tienes para vivir, Utiliza Royal Prestige.",
-    2: "La salud es una riqueza, cuida de tus amigos y su salud, regala un obsequio Royal Prestige al anotarlos aquí.",
-    3: "Recuerda que entre más referidos agregues, más oportunidades tienes de ganar.",
-    4: "Aprecia y valora tu salud y de quien te rodea todos los días, utiliza Royal Prestige.",
-    5: "La felicidad radica ante todo en la salud, Comparte tu secreto de cocinar saludable, envía un regalo (sin costo para ti) y anota a más amigos.",
-  };
+  const obj = [
+    "Gracias por dar de alta tu primer recomendado, te faltan 4 para participar en el concurso, sigue capturando. Recibe tu SMS, te estamos enviando el folio de tu captura.",
+    "Gracias por dar de alta tu segundo recomendado, te faltan 3 para participar en el concurso, sigue capturando. Te envíamos un SMS con el folio",
+    "Gracias por dar de alta tu tercer recomendado, te faltan 2 para participar en el concurso, sigue capturando. Te envíamos un SMS con el folio.",
+    "Gracias por dar de alta tu cuarto recomendado, te falta 1 para participar en el concurso, sigue capturando. Te envíamos un SMS con el folio.",
+    "Felicidades, ya estás participando en la gran rifa, recuerda que tus recomendados deberán recibir sus dos premios para que comiences a acumular boletos. Te envíamos un SMS con el folio.",
+    "Sigue capturando más recomendados, mientras más recomendados reciban sus premios, más boletos acumularás y más oportunidades tendrás de ganar. Te envíamos un SMS con el folio.",
+  ];
 
   const handleSubmit = async (values, actions) => {
     const user = {
@@ -81,12 +80,14 @@ const FormRecomendados = ({ phoneNumber }) => {
     };
 
     try {
-      const { data} = await axios.post(url, { ...user });
+      const { data } = await axios.post(url, user);
+
       swal.fire({
         icon: "success",
-        title: `Folio: ${data.person._id}`,
-        text: obj[Math.floor(Math.random() * (6 - 0) + 0)],
+        title: `Folio: ${data.folio.splice(-5)}`,
+        text: obj[data.count - 1],
       });
+
       actions.resetForm({
         values: {
           firstName: "",
@@ -108,23 +109,7 @@ const FormRecomendados = ({ phoneNumber }) => {
         title: "Error",
         text: "¡Hubo un error al mandar la solicitud!",
       });
-      actions.resetForm({
-        values: {
-          firstName: "",
-          lastName: "",
-          phoneNumber: "",
-          referrerPhoneNumber: phoneNumber,
-          city: "",
-          careOfHealth: "",
-          disease: "",
-          civilStatus: "",
-          age: "",
-          relationship: "",
-          job: "",
-        },
-      });
     }
-    
   };
 
   return (
