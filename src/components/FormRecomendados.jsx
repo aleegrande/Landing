@@ -11,7 +11,7 @@ import RecomendadosSchema from "../schemas/recomendados-schema";
 // Utilidades
 import selectMessage from "../utils/select-message";
 
-const baseUrl = "http://localhost:8080/api/v1";
+const baseUrl = "http://201.151.177.210:8080/api/v1";
 
 const arrs = {
   civilStatuses: ["Soltero/a", "Casado/a", "Viudo/a", "Divorciado/a"],
