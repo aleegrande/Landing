@@ -81,10 +81,13 @@ const FormRecomendados = ({ phoneNumber }) => {
     };
 
     try {
-      const { data, status } = await axios.post(
-        `${baseUrl}/people/q/add-referrer`,
-        user
-      );
+      const {
+        data,
+        status,
+      } = await axios.post(`${baseUrl}/people/q/add-referrer`, { ...user });
+
+      console.log(data);
+      console.log(status);
 
       if (status.toString().match(/[20][0-4]{1}/)) {
         swal.fire({
@@ -120,6 +123,8 @@ const FormRecomendados = ({ phoneNumber }) => {
         });
       }
     } catch (error) {
+      console.log(error.response);
+
       if (error.response.status === 400) {
         if (error.response.data?.error?.code === 11000) {
           return swal.fire({
