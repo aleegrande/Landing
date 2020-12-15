@@ -104,6 +104,7 @@ a{
   color: #f7eac5;
   font-size: 17px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .buttonForm:disabled,
@@ -205,4 +206,3 @@ label
   width: 220px;
   height: 60px;
 }
- 

@@ -11,7 +11,7 @@ import RecomendadosSchema from "../schemas/recomendados-schema";
 // Utilidades
 import selectMessage from "../utils/select-message";
 
-const url = "http://localhost:8080/api/v1/people/q/add-referrer";
+const baseUrl = "http://localhost:8080/api/v1";
 
 const arrs = {
   civilStatuses: ["Soltero/a", "Casado/a", "Viudo/a", "Divorciado/a"],
@@ -34,47 +34,57 @@ const arrs = {
 };
 
 const FormRecomendados = ({ phoneNumber }) => {
+  const getUsers = async () => {
+    try {
+      const result = await axios.get(`${baseUrl}/users`);
+
+      return result.data.users;
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
   const handleSubmit = async (values, actions) => {
+    const users = await getUsers();
+    const owner = users[Math.floor(Math.random() * users.length)]?._id;
+
     const user = {
       firstName: values.firstName,
+      owner,
       lastName: values.lastName,
       phoneNumber: values.phoneNumber,
-      owner: "5fd3b75ec3f3d61f7ae2fd88",
       referrerPhoneNumber: phoneNumber,
       job: values.job,
       city: values.city,
-      referrerFields: [
-        {
-          propertyId: "5fca85fde39d4c2b08a59482",
-          data: ["folio"],
-        },
-      ],
       fields: [
         {
-          propertyId: "5fca8713e39d4c2b08a59483",
+          propertyId: "5fd92937c399424e94415f7d",
           data: [values.civilStatus],
         },
         {
-          propertyId: "5fca8713e39d4c2b08a59484",
+          propertyId: "5fd929a3c399424e94415f7e",
           data: [values.careOfHealth],
         },
         {
-          propertyId: "5fca8713e39d4c2b08a59485",
+          propertyId: "5fd929cfc399424e94415f7f",
           data: [values.disease],
         },
         {
-          propertyId: "5fca8713e39d4c2b08a59486",
+          propertyId: "5fd92a00c399424e94415f80",
           data: [values.age],
         },
         {
-          propertyId: "5fca8713e39d4c2b08a59487",
+          propertyId: "5fd92a2dc399424e94415f81",
           data: [values.relationship],
         },
       ],
     };
 
     try {
-      const { data, status } = await axios.post(url, user);
+      const { data, status } = await axios.post(
+        `${baseUrl}/people/q/add-referrer`,
+        user
+      );
 
       if (status.toString().match(/[20][0-4]{1}/)) {
         swal.fire({
@@ -345,6 +355,7 @@ const FormRecomendados = ({ phoneNumber }) => {
                 <p>{errors?.job}</p>
               </div>
             </div>
+
             <div className="divform">
               <button
                 className="buttonForm"
